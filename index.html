@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UD. ADITHIA SOLUTION - Social Media Links</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        
+        /* Mobile First - Base styles */
+        .social-link {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            touch-action: manipulation;
+        }
+        
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .social-link:hover::before,
+        .social-link:active::before {
+            left: 100%;
+        }
+        
+        .social-link:hover,
+        .social-link:active {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        
+        .company-card {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Platform Colors */
+        .instagram { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
+        .tiktok { background: linear-gradient(45deg, #ff0050, #00f2ea); }
+        .facebook { background: linear-gradient(45deg, #1877f2, #42a5f5); }
+        .twitter { background: linear-gradient(45deg, #1da1f2, #0d8bd9); }
+        .linkedin { background: linear-gradient(45deg, #0077b5, #00a0dc); }
+        .website { background: linear-gradient(45deg, #667eea, #764ba2); }
+        .whatsapp { background: linear-gradient(45deg, #25d366, #128c7e); }
+        .youtube { background: linear-gradient(45deg, #ff0000, #cc0000); }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        /* Mobile Styles (320px - 767px) */
+        @media (max-width: 767px) {
+            .container {
+                padding: 0.75rem;
+            }
+            
+            .social-link {
+                padding: 1rem !important;
+                margin-bottom: 0.75rem;
+            }
+            
+            .social-link i {
+                font-size: 1.25rem !important;
+                margin-right: 0.75rem !important;
+            }
+            
+            .social-link .text-lg {
+                font-size: 1rem !important;
+            }
+            
+            .social-link .text-sm {
+                font-size: 0.8rem !important;
+            }
+            
+            .company-card {
+                padding: 1.5rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+            
+            .company-card h1 {
+                font-size: 1.5rem !important;
+            }
+            
+            .logo-container {
+                width: 4rem !important;
+                height: 4rem !important;
+            }
+            
+            .logo-container img {
+                width: 3rem !important;
+                height: 3rem !important;
+            }
+        }
+        
+        /* Tablet Styles (768px - 1023px) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .container {
+                max-width: 600px;
+                padding: 1.5rem;
+            }
+            
+            .social-link:hover {
+                transform: translateY(-3px) scale(1.02);
+                box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+            }
+        }
+        
+        /* Desktop Styles (1024px+) */
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 500px;
+                padding: 2rem;
+            }
+            
+            .social-link:hover {
+                transform: translateY(-4px) scale(1.02);
+                box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            }
+            
+            .floating {
+                animation: floating 4s ease-in-out infinite;
+            }
+        }
+        
+        /* Large Desktop (1440px+) */
+        @media (min-width: 1440px) {
+            .container {
+                max-width: 550px;
+            }
+        }
+        
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .social-link:hover {
+                transform: none;
+                box-shadow: none;
+            }
+            
+            .social-link:active {
+                transform: scale(0.98);
+                transition: transform 0.1s;
+            }
+        }
+        
+        /* High DPI displays */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .company-card, .social-link {
+                border-width: 0.5px;
+            }
+        }
+        
+        /* Landscape mobile optimization */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .floating {
+                animation: none;
+            }
+            
+            .company-card {
+                padding: 1rem !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            .social-link {
+                padding: 0.75rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+        }
+        
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            .floating,
+            .pulse-animation,
+            .social-link::before {
+                animation: none;
+            }
+            
+            .social-link {
+                transition: none;
+            }
+        }
+        
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            .company-card {
+                background: rgba(255, 255, 255, 0.1);
+                border-color: rgba(255, 255, 255, 0.15);
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="container">
+        <!-- Company Profile Card -->
+        <div class="company-card rounded-3xl p-8 mb-8 text-center text-white floating">
+            <div class="logo-container w-20 h-20 mx-auto mb-4 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center pulse-animation overflow-hidden border-2 border-white/20">
+                <img src="https://adithia-solution.github.io/adithia.solution/logo3.png" alt="UD. Adithia Solution Logo" class="w-16 h-16 object-contain">
+            </div>
+            <h1 class="text-2xl font-bold mb-2">UD. ADITHIA SOLUTION</h1>
+            <p class="text-white/90 mb-4 font-medium">Digital Business Solutions</p>
+            <p class="text-sm text-white/80 leading-relaxed">
+                Solusi terpercaya untuk kebutuhan digital bisnis Anda. Hubungi kami melalui platform media sosial di bawah ini!
+            </p>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="space-y-4">
+            <!-- Website -->
+            <a href="#" class="social-link website block w-full text-white rounded-2xl p-5 text-center font-semibold border border-white/20">
+                <div class="flex items-center justify-center">
+                    <i class="fas fa-globe text-2xl mr-4"></i>
+                    <div class="text-left">
+                        <div class="text-lg font-bold">Website</div>
+                        <div class="text-sm opacity-90">www.adithiasolution.com</div>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- LinkedIn -->
+            <a href="#" class="social-link linkedin block w-full text-white rounded-2xl p-5 text-center font-semibold border border-white/20">
+                <div class="flex items-center justify-center">
+                    <i class="fab fa-linkedin text-2xl mr-4"></i>
+                    <div class="text-left">
+                        <div class="text-lg font-bold">LinkedIn</div>
+                        <div class="text-sm opacity-90">UD. Adithia Solution</div>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- WhatsApp Business -->
+            <a href="#" class="social-link whatsapp block w-full text-white rounded-2xl p-5 text-center font-semibold border border-white/20">
+                <div class="flex items-center justify-center">
+                    <i class="fab fa-whatsapp text-2xl mr-4"></i>
+                    <div class="text-left">
+                        <div class="text-lg font-bold">WhatsApp Business</div>
+                        <div class="text-sm opacity-90">Chat langsung dengan kami</div>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Instagram -->
+            <a href="#" class="social-link instagram block w-full text-white rounded-2xl p-5 text-center font-semibold border border-white/20">
+                <div class="flex items-center justify-center">
+                    <i class="fab fa-instagram text-2xl mr-4"></i>
+                    <div class="text-left">
+                        <div class="text-lg font-bold">Instagram</div>
+                        <div class="text-sm opacity-90">@udadithiasolution</div>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Facebook -->
+            <a href="#" class="social-link facebook block w-full text-white rounded-2xl p-5 text-center font-semibold border border-white/20">
+                <div class="flex items-center justify-center">
+                    <i class="fab fa-facebook text-2xl mr-4"></i>
+                    <div class="text-left">
+                        <div class="text-lg font-bold">Facebook</div>
+                        <div class="text-sm opacity-90">UD. Adithia Solution</div>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- TikTok -->
+            <a href="#" class="social-link tiktok block w-full text-white rounded-2xl p-5 text-center font-semibold border border-white/20">
+                <div class="flex items-center justify-center">
+                    <i class="fab fa-tiktok text-2xl mr-4"></i>
+                    <div class="text-left">
+                        <div class="text-lg font-bold">TikTok</div>
+                        <div class="text-sm opacity-90">@udadithiasolution</div>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- X (formerly Twitter) -->
+            <a href="#" class="social-link twitter block w-full text-white rounded-2xl p-5 text-center font-semibold border border-white/20">
+                <div class="flex items-center justify-center">
+                    <svg class="w-6 h-6 mr-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    <div class="text-left">
+                        <div class="text-lg font-bold">X</div>
+                        <div class="text-sm opacity-90">@adithiasolution</div>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- YouTube -->
+            <a href="#" class="social-link youtube block w-full text-white rounded-2xl p-5 text-center font-semibold border border-white/20">
+                <div class="flex items-center justify-center">
+                    <i class="fab fa-youtube text-2xl mr-4"></i>
+                    <div class="text-left">
+                        <div class="text-lg font-bold">YouTube</div>
+                        <div class="text-sm opacity-90">Adithia Solution Channel</div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="company-card rounded-2xl p-6 mt-8 text-center text-white">
+            <h3 class="text-lg font-bold mb-3">Informasi Kontak</h3>
+            <div class="space-y-2 text-sm">
+                <p><i class="fas fa-phone mr-2"></i> +62 812-3456-7890</p>
+                <p><i class="fas fa-envelope mr-2"></i> info@adithiasolution.com</p>
+                <p><i class="fas fa-map-marker-alt mr-2"></i> Jakarta, Indonesia</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-6 text-white/70 text-sm">
+            <p>© 2024 UD. ADITHIA SOLUTION</p>
+            <p class="mt-1">Solusi Digital Terpercaya</p>
+        </div>
+    </div>
+
+    <script>
+        // Static functionality - no external dependencies
+        const socialLinks = {
+            website: 'https://www.adithiasolution.com',
+            linkedin: 'https://linkedin.com/company/udadithiasolution',
+            whatsapp: 'https://wa.me/6281234567890?text=Halo%20UD.%20Adithia%20Solution',
+            instagram: 'https://instagram.com/udadithiasolution',
+            facebook: 'https://facebook.com/udadithiasolution',
+            tiktok: 'https://tiktok.com/@udadithiasolution',
+            twitter: 'https://x.com/adithiasolution',
+            youtube: 'https://youtube.com/@adithiasolutionchannel'
+        };
+
+        // Add click functionality with platform-specific actions
+        document.querySelectorAll('.social-link').forEach((link, index) => {
+            const platforms = Object.keys(socialLinks);
+            const platform = platforms[index];
+            
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Create ripple effect
+                const ripple = document.createElement('div');
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255,255,255,0.5)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.left = (e.clientX - this.offsetLeft - 15) + 'px';
+                ripple.style.top = (e.clientY - this.offsetTop - 15) + 'px';
+                ripple.style.width = '30px';
+                ripple.style.height = '30px';
+                ripple.style.pointerEvents = 'none';
+                
+                this.style.position = 'relative';
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+                
+                // Show platform-specific feedback
+                const platformName = this.querySelector('.text-lg').textContent;
+                const originalContent = this.innerHTML;
+                
+                this.innerHTML = `
+                    <div class="flex items-center justify-center">
+                        <i class="fas fa-external-link-alt text-2xl mr-4"></i>
+                        <div class="text-left">
+                            <div class="text-lg font-bold">Membuka ${platformName}...</div>
+                            <div class="text-sm opacity-90">Mohon tunggu sebentar</div>
+                        </div>
+                    </div>
+                `;
+                
+                // Open the actual link after feedback
+                setTimeout(() => {
+                    if (socialLinks[platform]) {
+                        window.open(socialLinks[platform], '_blank', 'noopener,noreferrer');
+                    }
+                    this.innerHTML = originalContent;
+                }, 1000);
+            });
+        });
+
+        // Add CSS for ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Staggered entrance animation
+        window.addEventListener('load', () => {
+            const links = document.querySelectorAll('.social-link');
+            links.forEach((link, index) => {
+                link.style.opacity = '0';
+                link.style.transform = 'translateY(30px)';
+                link.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                
+                setTimeout(() => {
+                    link.style.opacity = '1';
+                    link.style.transform = 'translateY(0)';
+                }, index * 100 + 300);
+            });
+        });
+
+        // Add hover sound effect simulation
+        document.querySelectorAll('.social-link').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.filter = 'brightness(1.1)';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.style.filter = 'brightness(1)';
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9672168726ebfd71',t:'MTc1Mzg0OTQ4My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
